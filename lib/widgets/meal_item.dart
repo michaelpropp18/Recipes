@@ -15,6 +15,40 @@ class MealItem extends StatelessWidget {
       @required this.complexity,
       @required this.affordability});
 
+  String get complexityTest {
+    switch (complexity) {
+      case Complexity.Simple:
+        return "Simple";
+        break;
+      case Complexity.Challenging:
+        return "Challenging";
+        break;
+      case Complexity.Hard:
+        return "Hard";
+        break;
+      default:
+        return "Unknown";
+        break;
+    }
+  }
+
+  String get affordabilityTest {
+    switch (affordability) {
+      case Affordability.Affordable:
+        return "Affordable";
+        break;
+      case Affordability.Luxurious:
+        return "Luxurious";
+        break;
+      case Affordability.Pricey:
+        return "Pricey";
+        break;
+      default:
+        return "Unknown";
+        break;
+    }
+  }
+
   void selectMeal() {}
   @override
   Widget build(BuildContext context) {
@@ -51,7 +85,35 @@ class MealItem extends StatelessWidget {
                       ),
                     )
                   ],
-                )
+                ),
+                Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.schedule),
+                            SizedBox(width: 6),
+                            Text('$duration min'),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.work),
+                            SizedBox(width: 6),
+                            Text(complexityTest),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.attach_money),
+                            SizedBox(width: 6),
+                            Text(affordabilityTest),
+                          ],
+                        )
+                      ],
+                    ))
               ],
             ),
             elevation: 4,
